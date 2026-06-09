@@ -25,11 +25,8 @@ def checkWin(mark):
         return True    
 # drawboard()
 
-def checkDraw(mark):
-    if board[1] != " " and board[2] != " " and board[3] != " " and board[4] != " " and board[5] != " " and board[6] != " " and board[7] != " " and board[8] != " " and board[9] != " ":
-        return True
-
 player = 1
+count = 0
 
 
 while True:
@@ -42,15 +39,15 @@ while True:
     pos = int(input("Enter Pos (1-9)"))
     if(board[pos] == " "):
         board[pos] = mark
+        count = count + 1 
         # Check if win or not 
         if(checkWin(mark)):
             drawboard()
             print("Player",player, "Won")
             break
-        
-        if(checkDraw(mark) == False):
-            drawboard()
-            print("Game Draw")
+
+        if count == 9:
+            print("Draw")
             break
 
         if player == 1:
